@@ -4,7 +4,8 @@ indicar cual es el mayor, cuál es el del medio y cuál el menor.
 Considerar que los tres valores son diferentes
 """
 
-def mayor_medio_menor(a, b ,c):
+
+def mayor_medio_menor(a, b, c):
 
     mayor = a
 
@@ -33,14 +34,13 @@ def main():
     # b = int(input("Ingrese otro entero: "))
     # c = int(input("Ingrese otro entero mas: "))
 
-    mayor_medio_menor(1,2,3)
-    mayor_medio_menor(1,3,2)
-    mayor_medio_menor(2,1,3)
-    mayor_medio_menor(2,3,1)
-    mayor_medio_menor(3,2,1)
-    mayor_medio_menor(3,1,2)
-    mayor_medio_menor(3,3,3)
-    
+    mayor_medio_menor(1, 2, 3)
+    mayor_medio_menor(1, 3, 2)
+    mayor_medio_menor(2, 1, 3)
+    mayor_medio_menor(2, 3, 1)
+    mayor_medio_menor(3, 2, 1)
+    mayor_medio_menor(3, 1, 2)
+    mayor_medio_menor(3, 3, 3)
 
 
 if __name__ == "__main__":
