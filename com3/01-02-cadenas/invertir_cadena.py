@@ -6,6 +6,7 @@ def invertir_cadena(cadena):
     return invertida
 
 def es_palindromo(cadena):
+    return cadena == invertir_cadena(cadena)
 
 
 def main():

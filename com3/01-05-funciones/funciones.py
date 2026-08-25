@@ -59,7 +59,7 @@ def busqueda_binaria(lista, objetivo):
 
 def factorial(n):
     if n < 0:
-        raise ValueError("Mas grande de cero papá !!!")
+        raise ValueError("n debe ser mayor o igual a cero.")
     if n == 0:
         return 1
     else:
