@@ -1,4 +1,7 @@
 {
+    "python.testing.unittestEnabled": true,
+    "python.testing.pytestEnabled": false,
+
     "python.testing.unittestArgs": [
         "-v",
         "-s",
@@ -6,6 +9,16 @@
         "-p",
         "test_*.py"
     ],
-    "python.testing.pytestEnabled": false,
-    "python.testing.unittestEnabled": true
+
+    "editor.formatOnSave": true,
+    "[python]": {
+        "editor.defaultFormatter": "charliermarsh.ruff"
+    },
+
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false
+    }
 }

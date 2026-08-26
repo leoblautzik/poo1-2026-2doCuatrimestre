@@ -12,10 +12,12 @@ class TestNota(unittest.TestCase):
         nota = Nota(6)
         self.assertEqual(nota.valor, 6)
 
-    def test_cambiar_valor(self):
-        nota = Nota(6)
-        nota.valor = 8
-        self.assertEqual(nota.valor, 8)
+    # No es correcto en el contexto de una Nota cambiarla si
+    # no es recuperando
+    # def test_cambiar_valor(self):
+    #     nota = Nota(6)
+    #     nota.valor = 8
+    #     self.assertEqual(nota.valor, 8)
 
     def test_nota_menor_a_1(self):
         with self.assertRaises(ValueError):
