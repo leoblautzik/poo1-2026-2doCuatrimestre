@@ -18,7 +18,7 @@ Dentro del proyecto y en la raíz del mismo, crear una carpeta `.vscode`. Dentro
     "python.testing.unittestArgs": [
         "-v",
         "-s",
-        "tests",
+        ".",
         "-p",
         "test_*.py"
     ],
