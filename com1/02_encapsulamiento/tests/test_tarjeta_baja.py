@@ -1,6 +1,6 @@
 import unittest
 
-from tarjeta_baja import TarjetaBaja
+from src.tarjeta_baja import TarjetaBaja
 
 
 class TestTarjetaBaja(unittest.TestCase):

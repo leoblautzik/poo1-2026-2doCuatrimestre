@@ -1,6 +1,6 @@
 import unittest
 
-from cerradura import Cerradura
+from src.cerradura import Cerradura
 
 
 class TestCerradura(unittest.TestCase):

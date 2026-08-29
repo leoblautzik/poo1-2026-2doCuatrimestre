@@ -1,6 +1,6 @@
 import unittest
 
-from nota import Nota
+from src.nota import Nota
 
 
 class TestNota(unittest.TestCase):

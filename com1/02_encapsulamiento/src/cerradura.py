@@ -31,7 +31,7 @@ class Cerradura:
         return self.__bloqueada
 
     def abrir(self, clave):
-
+        pass
 
 
 def main():
