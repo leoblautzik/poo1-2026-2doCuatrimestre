@@ -1,41 +1,55 @@
 class Nota:
-    def __init__(self, valor_inicial) -> None:
-        if valor_inicial < 0 or valor_inicial > 10:
-            raise ValueError("Nota inválida")
+    def __init__(self, valor_nota) -> None:
+        if valor_nota < 1 or valor_nota > 10:
+            raise ValueError("Nota fuera de rango")
+        self.__valor = valor_nota
 
-        self.__valor_nota = valor_inicial
+    @property
+    def valor(self):
+        return self.__valor
 
-    def obtener_valor(self):
-        return self.__valor_nota
+    # No es correcto en el contexto de una Nota cambiarla sin recuperar
+    # @valor.setter
+    # def valor(self, nuevo_valor):
+    #     if nuevo_valor < 1 or nuevo_valor > 10:
+    #         raise ValueError("Nota fuera de rango")
+    #     self.__valor = nuevo_valor
 
-    def aprobado(self):
-        return self.__valor_nota >= 4
+    def aprobada(self):
+        return self.__valor >= 4
 
-    def desaprobado(self):
-        return not self.aprobado()
+    def reprobada(self):
+        return self.__valor < 4
 
-    def recuperar(self, nueva_nota):
-        if nueva_nota < 0 or nueva_nota > 10:
-            raise ValueError("Nota inválida")
+    def promociona(self):
+        return self.__valor >= 7
 
-        self.__valor_nota = max(self.__valor_nota, nueva_nota)
+    def regulariza(self):
+        return self.aprobada() and not self.promociona()
+
+    def recupera(self, nuevo_valor):
+        if nuevo_valor < 1 or nuevo_valor > 10:
+            raise ValueError("Nota fuera de rango")
+        self.__valor = max(self.__valor, nuevo_valor)
+
+    def __str__(self) -> str:
+        return f"Nota: {self.__valor}"
 
 
 def main():
-    nota_carlitos = Nota(5)
-    nota_laurita = Nota(2)
+    nota_matias = Nota(6)
+    print(f"Esta aprobada: {nota_matias.aprobada()}")
+    print(f"Esta reprobada: {nota_matias.reprobada()}")
+    print(f"Esta promocinada: {nota_matias.promociona()}")
+    print(nota_matias)
 
-    print(nota_carlitos.obtener_valor())
-    print(nota_laurita.obtener_valor())
+    nota_pepe = Nota(2)
+    print(f"Esta aprobada: {nota_pepe.aprobada()}")
+    print(f"Esta reprobada: {nota_pepe.reprobada()}")
+    print(f"Esta promocinada: {nota_pepe.promociona()}")
+    print(nota_pepe)
 
-    print(nota_carlitos.aprobado())
-    print(nota_laurita.aprobado())
-
-    print(nota_carlitos.desaprobado())
-    print(nota_laurita.desaprobado())
-
-    nota_laurita.recuperar(-4)
-    print(nota_laurita.aprobado())
+    print(nota_pepe.valor)
 
 
 if __name__ == "__main__":

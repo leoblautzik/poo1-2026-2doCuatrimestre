@@ -2,7 +2,7 @@ import math
 
 
 class Circulo:
-    def __init__(self, radio) -> None:
+    def __init__(self, radio):
         self.radio = radio
 
     @property
@@ -25,22 +25,27 @@ class Circulo:
 
     @property
     def perimetro(self):
-        return math.pi * self.diametro
+        return self.radio * 2 * math.pi
 
     @perimetro.setter
     def perimetro(self, nuevo_perimetro):
-        self.radio = nuevo_perimetro / 2 / math.pi
+        self.radio = nuevo_perimetro / (2 * math.pi)
 
     @property
     def area(self):
-        return math.pi * pow(self.radio, 2)
+        return math.pi * self.radio * self.radio
 
     @area.setter
-    def area(self, nueva_area):
-        self.radio = math.sqrt(nueva_area / math.pi)
+    def area(self, nuevo_area):
+        self.radio = math.sqrt(nuevo_area / math.pi)
 
-    def __str__(self) -> str:
-        return f"Circulo: radio: {self.radio:.2f}, diametro: {self.diametro:.2f}, perimetro: {self.perimetro:.2f}, area: {self.area:.2f}"
+    def __str__(self):
+        s = "Soy un círculo felíz\n"
+        s += f"radio: {self.__radio}\n"
+        s += f"diametro: {self.diametro}\n"
+        s += f"perimetro: {self.perimetro}\n"
+        s += f"area: {self.area}"
+        return s
 
 
 def main():
@@ -48,11 +53,11 @@ def main():
     print(circulito)
     circulito.radio = 5
     print(circulito)
-    circulito.diametro = 16
+    circulito.area = 36
     print(circulito)
 
-    circulito.area = 32
-    print(circulito)
+    c1 = Circulo(1)
+    print(c1)
 
 
 if __name__ == "__main__":

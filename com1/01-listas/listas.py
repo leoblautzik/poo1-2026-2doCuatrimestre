@@ -50,7 +50,7 @@ def main():
     print(esta_ordenada([]))
     print(esta_ordenada([1]))
 
-    variadita = [1, "a", "Fruta", "queso", [1, 2]]
+    # variadita = [1, "a", "Fruta", "queso", [1, 2]]
     # print(esta_ordenada(variadita))
 
 

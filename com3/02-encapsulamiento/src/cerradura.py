@@ -1,23 +1,25 @@
 """
 Cerradura
 Cuando una Cerradura se bloquea no puede volver a abrirse nunca más
-class Cerradura {
-   public Cerradura(int claveDeApertura,int cantidadDeFallosConsecutivosQueLaBloquean)
-   public boolean abrir(int clave)
-   public void cerrar()
-   public boolean estaAbierta()
-   public boolean estaCerrada()
-   public boolean fueBloqueada()
-   public int contarAperturasExitosas()
-   public int contarAperturasFallidas()
-}
+
+class Cerradura:
+    def __init__(self, clave_de_apertura: int, cantidad_de_fallos_consecutivos_que_la_bloquean: int)
+    def abrir(self, clave: int) -> bool
+    def cerrar(self) -> None
+    def esta_abierta(self) -> bool
+    def esta_cerrada(self) -> bool
+    def fue_bloqueada(self) -> bool
+    def contar_aperturas_exitosas(self) -> int
+    def contar_aperturas_fallidas(self) -> int
 """
 
 
 class Cerradura:
-    def __init__(self, clave, cfcqlb) -> None:
-        self.__clave = clave
-        self.__cfcqlb = cfcqlb
+    def __init__(
+        self, clave_de_apertura, cantidad_de_fallos_consecutivos_que_la_bloquean
+    ) -> None:
+        self.__clave = clave_de_apertura
+        self.__cfcqlb = cantidad_de_fallos_consecutivos_que_la_bloquean
         self.__abierta = False
         self.__bloqueada = False
         self.__aperturas_exitosas = 0
@@ -29,9 +31,6 @@ class Cerradura:
 
     def esta_cerrada(self) -> bool:
         return not self.esta_abierta()
-
-    def esta_bloqueada(self) -> bool:
-        return self.__bloqueada
 
     def fue_bloqueada(self) -> bool:
         return self.__bloqueada
