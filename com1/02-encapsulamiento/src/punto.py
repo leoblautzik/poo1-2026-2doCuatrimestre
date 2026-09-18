@@ -1,8 +1,10 @@
 from __future__ import annotations
 
 import math
+from functools import total_ordering
 
 
+@total_ordering
 class Punto:
     def __init__(self, x, y) -> None:
         self.__x = x
@@ -18,12 +20,20 @@ class Punto:
         return self.esta_sobre_eje_x() and self.esta_sobre_eje_y()
 
     def distancia_al_origen(self):
-        # return math.sqrt(math.pow(self.__x, 2) + math.pow(self.__y, 2))
-        # return math.hypot(self.__x, self.__y)
         return self.distancia(Punto(0, 0))
 
     def distancia(self, otro_punto: Punto) -> float:
         return math.hypot(self.__x - otro_punto.__x, self.__y - otro_punto.__y)
+
+    def __eq__(self, value: object, /) -> bool:
+        if not isinstance(value, Punto):
+            return NotImplemented
+        return (self.__x, self.__y) == (value.__x, value.__y)
+
+    def __lt__(self, value: object, /) -> bool:
+        if not isinstance(value, Punto):
+            return NotImplemented
+        return (self.__x, self.__y) < (value.__x, value.__y)
 
 
 def main():
