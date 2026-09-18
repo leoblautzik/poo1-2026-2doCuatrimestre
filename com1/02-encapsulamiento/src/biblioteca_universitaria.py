@@ -6,72 +6,93 @@ class Libro:
     """
 
     def __init__(self, titulo, autor, isbn, ejemplares_disponibles) -> None:
-        self.titulo = titulo
+        if ejemplares_disponibles < 0:
+            raise ValueError("La cantidad de ejemplares no puede ser negativa")
+        self.__titulo = titulo
         self.__autor = autor
         self.__isbn = isbn
         self.__ejemplares_disponibles = ejemplares_disponibles
         self.__ejemplares_prestados = 0
 
+    @property
+    def titulo(self):
+        return self.__titulo
+
+    @property
+    def autor(self):
+        return self.__autor
+
+    @property
+    def ejemplares_disponibles(self):
+        return self.__ejemplares_disponibles
+
+    @property
+    def ejemplares_prestados(self):
+        return self.__ejemplares_prestados
+
     def hay_disponibles(self) -> bool:
         return self.__ejemplares_disponibles > 0
 
     def prestar(self):
-        if self.hay_disponibles():
-            self.__ejemplares_disponibles -= 1
-            self.__ejemplares_prestados += 1
+        if not self.hay_disponibles():
+            raise RuntimeError("No quedan ejemplares disponibles")
+        self.__ejemplares_disponibles -= 1
+        self.__ejemplares_prestados += 1
 
     def devolver(self):
+        if self.__ejemplares_prestados == 0:
+            raise RuntimeError("No se han prestado ejemplares de ese libro")
         self.__ejemplares_disponibles += 1
         self.__ejemplares_prestados -= 1
 
     def __repr__(self) -> str:
-        return f"{self.titulo}, {self.__autor}, {self.__isbn}, EjemDisponibles: {self.__ejemplares_disponibles}, EjemPrestados: {self.__ejemplares_prestados}"
+        return f"{self.__titulo}, {self.__autor}, {self.__isbn}, EjemDisponibles: {self.__ejemplares_disponibles}, EjemPrestados: {self.__ejemplares_prestados}"
 
 
 class Estudiante:
-    def __init__(self):
-        self.__cuenta_prestamo = CuentaPrestamo()
-
-    def pedir_prestado(self, libro, fecha_devolucion):
-        self.__cuenta_prestamo.pedir_prestado(libro, fecha_devolucion)
-
-    def devolver(self, libro):
-        self.__cuenta_prestamo.devolver(libro)
-
-    def __repr__(self) -> str:
-        return f"{self.__cuenta_prestamo.__repr__()}"
-
-
-class CuentaPrestamo:
-    """La CuentaDePrestamo es responsable de manejar la lógica
-    de cuántos libros tiene un estudiante y si puede tomar más.
-    Los préstamos deben gestionarse a través de una clase CuentaDePrestamo,
-    que lleva un registro interno de los libros prestados y fechas de devolución.
-    """
-
-    def __init__(self) -> None:
+    def __init__(self, nombre):
+        self.__nombre = nombre
         self.__prestamos: list[tuple[Libro, str]] = []
+
+    @property
+    def nombre(self) -> str:
+        return self.__nombre
 
     def pedir_prestado(self, libro, fecha_devolucion):
         if len(self.__prestamos) >= 3:
-            raise RuntimeError("Ya no puede pedir mas libros")
+            raise RuntimeError("El estudiante ya tiene tres préstamos")
+
+        libro.prestar()
+
         self.__prestamos.append((libro, fecha_devolucion))
 
     def devolver(self, libro):
-        self.__prestamos.remove(libro)
+
+        if len(self.__prestamos) == 0:
+            raise RuntimeError("No hay prestamos")
+
+        # lista_b = [b for a, b in lista]
+
+        libros = [libro for libro, _ in self.__prestamos]
+
+        if libro not in libros:
+            raise RuntimeError("El estudiante no tiene ese libro")
+
+        for prestamo in self.__prestamos:
+            if prestamo[0] == libro:
+                libro.devolver()
+                self.__prestamos.remove(prestamo)
 
     def __repr__(self) -> str:
-        s = ""
-        for e in self.__prestamos:
-            s += e[0].titulo
-            s += "\n"
+        s = f"Estudiante: {self.nombre}, \n"
+        s = s + f"Libros prestados: {self.__prestamos}"
         return s
 
 
 class Biblioteca:
     def __init__(self, libros: list[Libro]) -> None:
         self.__libros: list[Libro] = libros
-        self.__prestamos: list[tuple[Estudiante, Libro]] = []
+        self.__prestamos: list[tuple[Estudiante, Libro, str]] = []
 
     def prestar(
         self, estudiante: Estudiante, libro_solicitado: Libro, fecha_devolucion: str
@@ -82,22 +103,27 @@ class Biblioteca:
         pos = self.__libros.index(libro_solicitado)
         libro = self.__libros[pos]
 
-        if not libro.hay_disponibles():
-            print("No hay ejemplares disponibles")
-        else:
-            estudiante.pedir_prestado(libro, fecha_devolucion)
-            libro.prestar()
-            self.__prestamos.append((estudiante, libro))
+        estudiante.pedir_prestado(libro, fecha_devolucion)
+
+        self.__prestamos.append((estudiante, libro, fecha_devolucion))
 
     def devolver(self, estudiante: Estudiante, libro_devuelto: Libro):
+        estudiante_libro = [
+            (estudiante, libro) for estudiante, libro, _ in self.__prestamos
+        ]
+        if (estudiante, libro_devuelto) not in estudiante_libro:
+            raise RuntimeError("Devolución inconsistente")
+
         libro = self.__libros[self.__libros.index(libro_devuelto)]
-        libro.devolver()
+
         estudiante.devolver(libro)
-        self.__prestamos.remove((estudiante, libro))
+        for p in self.__prestamos:
+            if p[0] == estudiante and p[1] == libro_devuelto:
+                self.__prestamos.remove(p)
 
     def listar_prestamos(self):
         for p in self.__prestamos:
-            print(p)
+            print(p[0].nombre, p[1].titulo, p[2])
 
 
 def main():
@@ -109,7 +135,7 @@ def main():
 
     el_ateneo = Biblioteca([libro1, libro2, libro3, libro4])
 
-    aquiles = Estudiante()
+    aquiles = Estudiante("Aquiles")
 
     el_ateneo.prestar(aquiles, libro1, "mañana")
     el_ateneo.prestar(aquiles, libro2, "30-09-26")
