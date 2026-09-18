@@ -1,3 +1,71 @@
+"""
+
+# Biblioteca Universitaria
+
+## Descripción
+Imagina que estás desarrollando un sistema para administrar los préstamos de una biblioteca universitaria.
+La biblioteca cuenta con una colección de libros. Cada libro tiene un título, un autor, un ISBN y una cantidad limitada de ejemplares disponibles.
+Los estudiantes pueden solicitar libros en préstamo, pero cada estudiante puede tener como máximo **3 libros prestados simultáneamente**.
+El sistema debe permitir registrar préstamos, devoluciones y consultar qué libros se encuentran prestados.
+
+## Clases y responsabilidades
+
+### Libro
+Cada libro debe mantener la siguiente información:
+* Título.
+* Autor.
+* ISBN.
+* Cantidad de ejemplares disponibles.
+* Cantidad de ejemplares prestados.
+Debe implementar, como mínimo, los siguientes métodos:
+* `prestar()`: registra el préstamo de un ejemplar.
+* `devolver()`: registra la devolución de un ejemplar.
+* `hay_disponibles()`: indica si hay ejemplares disponibles.
+
+### Estudiante
+Cada estudiante tiene un nombre y puede mantener un registro de sus libros prestados, incluyendo las fechas de devolución previstas.
+Debe implementar, como mínimo, los siguientes métodos:
+* `pedir_prestado(libro, fecha_devolucion)`: solicita un libro en préstamo.
+* `devolver(libro)`: devuelve un libro que tiene prestado.
+Un estudiante no puede tener más de 3 libros prestados simultáneamente.
+
+### Biblioteca
+La biblioteca mantiene una colección de libros y un registro de los préstamos realizados.
+Debe implementar, como mínimo, los siguientes métodos:
+* `prestar(estudiante, libro, fecha_devolucion)`: registra un préstamo, validando que el libro pertenezca a la biblioteca y que haya ejemplares disponibles.
+* `devolver(estudiante, libro)`: registra la devolución de un libro prestado.
+* `listar_prestamos()`: muestra los préstamos activos, indicando el estudiante, el libro y la fecha de devolución prevista.
+
+## Requisitos
+### Encapsulamiento
+Los atributos de las clases deben estar protegidos o privados.
+El acceso o modificación de estos atributos debe hacerse mediante métodos públicos controlados, como getters, setters o métodos específicos.
+
+### Composición y delegación
+La clase `Biblioteca` debe contener una colección de objetos `Libro`.
+La clase `Estudiante` debe mantener su propio registro de libros prestados.
+Las operaciones deben distribuirse entre los objetos según sus responsabilidades. Por ejemplo, `Biblioteca` puede delegar en `Estudiante`, y `Estudiante` puede delegar en `Libro`.
+No se debe implementar toda la lógica del sistema en una única clase.
+
+### Restricciones y validaciones
+* No se puede prestar un libro que no pertenezca a la biblioteca.
+* No se puede prestar un libro que no tenga ejemplares disponibles.
+* Un estudiante no puede superar el límite de 3 préstamos simultáneos.
+* No se puede devolver un libro que el estudiante no tenga prestado.
+* Al devolver un libro, debe actualizarse correctamente la cantidad de ejemplares disponibles.
+* Los registros de préstamos deben mantenerse consistentes.
+
+### Desafío extra
+Permitir consultar rápidamente qué libros están prestados actualmente y a qué estudiante.
+
+## Consideraciones
+El programa debe estar implementado en Python utilizando programación orientada a objetos.
+Se deben utilizar las clases indicadas y respetar sus responsabilidades.
+Se espera que el programa permita demostrar el uso de encapsulamiento, composición y delegación.
+No es necesario implementar una interfaz gráfica ni persistencia de datos.
+"""
+
+
 class Libro:
     """
     Cada Libro tiene título, autor, ISBN y un número limitado de ejemplares disponibles.
