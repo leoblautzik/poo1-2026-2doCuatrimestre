@@ -1,9 +1,9 @@
 from __future__ import annotations
 
-from abc import ABC, ABCMeta, abstractmethod
+from abc import ABC, abstractmethod
 
 
-class Aguatero(metaclass=ABCMeta):
+class Aguatero(ABC):
     @abstractmethod
     def recibir_agua(self):
         pass
@@ -151,7 +151,6 @@ class Caballero(Unidad, Aguatero):
 class Caballo(Aguatero):
     def __init__(self):
         self.__ataques_realizados = 0
-        # self.__rebelde = False
 
     def recibir_agua(self):
         self.__ataques_realizados = 0

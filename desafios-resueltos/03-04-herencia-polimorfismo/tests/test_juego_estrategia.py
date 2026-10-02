@@ -11,7 +11,7 @@ Reglas seguidas para escribir estos tests:
 
 import unittest
 
-from juego_estrategia import (
+from src.juego_estrategia import (
     Aguatero,
     Arquero,
     Caballero,
