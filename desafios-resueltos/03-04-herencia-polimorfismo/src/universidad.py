@@ -14,6 +14,10 @@ class Estudiante(ABC):
 
     def __init__(self, legajo, materias):
         self.__legajo = legajo
+
+        if not 1 <= materias <= 5:
+            raise ValueError("Cantidad de materias incorrecta")
+
         self.__materias = materias
 
     @property

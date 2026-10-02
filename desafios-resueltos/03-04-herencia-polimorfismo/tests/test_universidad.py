@@ -9,6 +9,32 @@ class TestEstudiante(unittest.TestCase):
 
         self.assertAlmostEqual(100000, Estudiante.get_cuota_base())
 
+    def test_cantidad_materias_minima_valida(self):
+        arquitecto = Arquitecto(1001, 1)
+
+        self.assertEqual(1, arquitecto.materias)
+
+    def test_cantidad_materias_maxima_valida(self):
+        arquitecto = Arquitecto(1002, 5)
+
+        self.assertEqual(5, arquitecto.materias)
+
+    def test_cantidad_materias_cero_invalida(self):
+        with self.assertRaises(ValueError):
+            Arquitecto(1003, 0)
+
+    def test_cantidad_materias_negativa_invalida(self):
+        with self.assertRaises(ValueError):
+            Arquitecto(1004, -1)
+
+    def test_cantidad_materias_mayor_a_cinco_invalida(self):
+        with self.assertRaises(ValueError):
+            Arquitecto(1005, 6)
+
+    def test_cantidad_materias_mucho_mayor_a_cinco_invalida(self):
+        with self.assertRaises(ValueError):
+            Abogado(2001, 10)
+
     def test_cuota_arquitecto_una_materia(self):
         Estudiante.set_cuota_base(100000)
 
