@@ -1,10 +1,17 @@
 ## Respuestas primer parcial 05/10/26
 
 
+### A 
+
+Una academia de arte admite pintores y escultores. De todos se guarda el legajo y los días por semana que asiste.  
+Todos los artistas pagan una cuota base, igual para todos.  
+Los pintores pagan la cuota base más un 10 % de la cuota base por cada día que asisten, y los escultores un 5 % mas por día.  
+Se dispone de la clase Artista (abstracta) ya implementada, con get_dias(), get_cuota_base(), get_cuota_mensual() abstracto y __repr__.  
+Implementar Pintor y Escultor con la funcionalidad necesaria para cumplir con la parte 
+
 
 ```python
 
-# A.
 class Pintor(Artista):
     def get_cuota_mensual(self):
         return super().get_cuota_base() * (1 + 0.10 * super().get_dias())
@@ -13,22 +20,32 @@ class Pintor(Artista):
 class Escultor(Artista):
     def get_cuota_mensual(self):
         return super().get_cuota_base() * (1 + 0.05 * super().get_dias())
+```
 
-# B.
+### B
+
+B. Implementar la class Academia de acuerdo al siguiente modelo:
+
+
+```python
+
 class Academia:
     def __init__(self):
         self.__artistas: list[Artista] = []
 
     def agregar_artista(self, artista):
+    """Los artistas se van agregando en una lista de Artista artistas, que es atributo privado de la class"""
         self.__artistas.append(artista)
 
     def get_total_mensual_de_cuotas(self):
+    """Retorna el importe total recaudado por todos los artistas de la Academia"""
         total = 0
         for a in self.__artistas:
             total += a.get_cuota_mensual()
         return total
 
     def listar_planilla_de_artistas(self):
+    """Emite por consola el listado de los artistas de a uno por línea, mostrando en cada una el número de legajo, cantidad de días y el valor de la cuota que abona."""
         for a in self.__artistas:
             print(a)
 ```
