@@ -1,3 +1,7 @@
+class LineaMalitaException(Exception):
+    pass
+
+
 class Venta:
     """<codigo_producto>,<descripcion>,<categoria>,<precio_unitario>,<cantidad_vendida>,<vendedor>"""
 
@@ -13,7 +17,11 @@ class Venta:
         self.codigo = codigo
         self.descripcion = descripcion
         self.categoria = categoria
+        if precio_unitario <= 0:
+            raise ValueError
         self.precio_unitario: float = precio_unitario
+        if cantidad_vendida <= 0:
+            raise ValueError
         self.cantidad_vendida: int = cantidad_vendida
         self.vendedor = vendedor
 
@@ -29,86 +37,80 @@ class Empresa:
         self.__ventas: list[Venta] = []
 
     def leer_ventas(self, archivo):
-
-        with open(archivo, "r") as mis_ventas:
-            for cada_linea in mis_ventas:
-                datos = cada_linea.strip().split(",")
-                venta = Venta(
-                    datos[0],
-                    datos[1],
-                    datos[2],
-                    float(datos[3]),
-                    int(datos[4]),
-                    datos[5],
-                )
-                self.__ventas.append(venta)
-
-        mis_ventas.close()
+        with open(archivo, "r") as v:
+            for cada_linea in v:
+                try:
+                    datos = cada_linea.strip().split(",")
+                    if len(datos) != 6:
+                        raise LineaMalitaException()
+                    venta = Venta(
+                        datos[0],
+                        datos[1],
+                        datos[2],
+                        float(datos[3]),
+                        int(datos[4]),
+                        datos[5],
+                    )
+                    self.__ventas.append(venta)
+                except LineaMalitaException:
+                    print("Hay una linea malita")
+                except ValueError:
+                    print("Formato de datos incorrecto")
+        v.close()
 
     def mostrar_ventas(self):
-        for cada_venta in self.__ventas:
-            print(cada_venta)
+        for venta in self.__ventas:
+            print(venta)
 
     def total_general_ventas(self) -> float:
         total = 0
-        for cada_venta in self.__ventas:
-            total += cada_venta.monto_venta()
+        for venta in self.__ventas:
+            total += venta.monto_venta()
 
         return total
 
-    def cantidad_vendida_producto(self) -> dict[str, int]:
-        aux: dict[str, int] = {}
-
-        for cada_venta in self.__ventas:
-            # if cada_venta.codigo in aux:
-            #     cantidad_vendida = aux[cada_venta.codigo]
-            # else:
-            #     cantidad_vendida = 0
-            cantidad_vendida = aux.get(cada_venta.codigo, 0)
-
-            cantidad_vendida += cada_venta.cantidad_vendida
-            aux[cada_venta.codigo] = cantidad_vendida
-
-        return aux
-
-    def producto_mas_vendido(self):
-        lista_mas_vendidos = []
-        vpp = self.cantidad_vendida_producto()
-
-        cantidades = vpp.values()
-        maxima_cantidad_vendida = max(cantidades)
-
-        for k, v in vpp.items():
-            if v == maxima_cantidad_vendida:
-                lista_mas_vendidos.append((k, v))
-
-        return lista_mas_vendidos
-
     def ventas_por_vendedor(self) -> dict[str, float]:
-        aux: dict[str, float] = {}
+        dic_out: dict[str, float] = {}
 
         for cada_venta in self.__ventas:
-            monto = aux.get(cada_venta.vendedor, 0.0)
-            monto += cada_venta.monto_venta()
-            aux[cada_venta.vendedor] = monto
+            monto_acumulado = (
+                dic_out.get(cada_venta.vendedor, 0) + cada_venta.monto_venta()
+            )
+            dic_out[cada_venta.vendedor] = monto_acumulado
 
-        return aux
+        return dic_out
 
-    def vendedor_estrella(self):
-        diccionario = self.ventas_por_vendedor()
-        vendedor, monto = max(diccionario.items(), key=lambda par: par[1])
-        return (vendedor, monto)
+    def cantidad_vendida_producto(self) -> dict[str, int]:
+        dict_out: dict[str, int] = {}
+
+        for cada_venta in self.__ventas:
+            acumulado = dict_out.get(cada_venta.codigo, 0) + cada_venta.cantidad_vendida
+            dict_out[cada_venta.codigo] = acumulado
+
+        return dict_out
+
+    def producto_mas_vendido(self) -> tuple[int, list[str]]:
+        lista = []
+        dic = self.cantidad_vendida_producto()
+
+        maxima_cantidad_vendida = max(dic.values())
+
+        for k, v in dic.items():
+            if v == maxima_cantidad_vendida:
+                lista.append(k)
+
+        return maxima_cantidad_vendida, lista
 
 
 def main():
     acme_informatica = Empresa()
     acme_informatica.leer_ventas("ventas.txt")
-    # acme_informatica.mostrar_ventas()
-    # print("Total de ventas: ", acme_informatica.total_general_ventas())
-    # print(acme_informatica.cantidad_vendida_producto())
+    acme_informatica.mostrar_ventas()
+    print("Total de ventas: ", acme_informatica.total_general_ventas())
+    print(acme_informatica.cantidad_vendida_producto())
     print(acme_informatica.producto_mas_vendido())
     print(acme_informatica.ventas_por_vendedor())
-    print(acme_informatica.vendedor_estrella())
+    # print(acme_informatica.vendedor_estrella())
 
 
 if __name__ == "__main__":
