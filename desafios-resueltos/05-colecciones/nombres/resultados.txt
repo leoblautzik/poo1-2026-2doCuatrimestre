@@ -1,0 +1,3 @@
+Nombres más largos:  (['Maximiliannn', 'Buenaventura'], 12) 
+Nombres que comienzan con "A": (['Ana', 'Axi', 'Ale', 'Aylen', 'Ailen', 'Agustin', 'Alberto', 'Alicia', 'Alvaro', 'Alejandra', 'Alejandro', 'Alexander'], 12)
+Cantidad total de nombres: 109
