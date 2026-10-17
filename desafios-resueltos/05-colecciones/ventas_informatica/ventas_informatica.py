@@ -21,12 +21,12 @@ class Venta:
             raise ValueError
         self.precio_unitario: float = precio_unitario
         if cantidad_vendida <= 0:
-            raise ValueError
+            raise ValueError("Cantidad vendida negativa")
         self.cantidad_vendida: int = cantidad_vendida
         self.vendedor = vendedor
 
     def __repr__(self):
-        return f"{self.codigo}, {self.descripcion}, {self.categoria}, {self.precio_unitario}, {self.cantidad_vendida}, {self.vendedor} Total venta: {self.monto_venta()}"
+        return f"{self.codigo}, {self.descripcion}, {self.categoria}, {self.precio_unitario}, {self.cantidad_vendida}, {self.vendedor}, Total venta: {self.monto_venta()}"
 
     def monto_venta(self):
         return self.cantidad_vendida * self.precio_unitario
