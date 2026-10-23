@@ -17,7 +17,7 @@ def contar_frecuencias(palabras: list[str]) -> dict[str, int]:
     for p in palabras:
         p = p.lower().strip()
 
-        frecuencias[p] = frecuencias.setdefault(p, 0) + 1
+        frecuencias[p] = frecuencias.get(p, 0) + 1
 
     return frecuencias
 
@@ -26,20 +26,21 @@ def palabra_mas_frecuente(dic: dict[str, int]) -> tuple[int, list[str]]:
     """devuelve la palabra con mayor frecuencia y su frecuencia.
     en caso de que haya empate, se debe retornar la frecuencia maxima y
     todas las palabras que se repiten ese numero de veces"""
+    if not dic:
+        return 0, []
 
     frec_max = 0
     palabras_mas_frecuentes = []
 
-    for frecuencia in dic.values():
-        frec_max = max(frec_max, frecuencia)
+    frec_max = max(dic.values())
 
-    for palabra, value in dic.items():
-        if value == frec_max:
+    for palabra, frecuencia in dic.items():
+        if frecuencia == frec_max:
             palabras_mas_frecuentes.append(palabra)
 
     return (frec_max, palabras_mas_frecuentes)
 
-    # return max(dic.items(), key=lambda item: item[1])
+    # return max(dic.items(), key=lambda item: item[1]) # solamente devuelve la tupla (k,v) con el mayor v.
 
 
 def invertir_diccionario(dic_in: dict[str, list[str]]) -> dict[str, list[str]]:
@@ -63,7 +64,7 @@ def invertir_diccionario(dic_in: dict[str, list[str]]) -> dict[str, list[str]]:
 
     for dia, alumnos in dic_in.items():
         for cada_alumno in alumnos:
-            lista_dias = dic_out.setdefault(cada_alumno, [])
+            lista_dias = dic_out.get(cada_alumno, [])
             lista_dias.append(dia)
             dic_out[cada_alumno] = lista_dias
 
@@ -77,10 +78,10 @@ def fusionar_diccionarios(dic1: dict[str, int], dic2: dict[str, int]) -> dict[st
     dic_out: dict[str, int] = {}
 
     for k, v in dic1.items():
-        dic_out[k] = dic_out.setdefault(k, 0) + v
+        dic_out[k] = v
 
     for k, v in dic2.items():
-        dic_out[k] = dic_out.setdefault(k, 0) + v
+        dic_out[k] = dic_out.get(k, 0) + v
 
     return dic_out
 

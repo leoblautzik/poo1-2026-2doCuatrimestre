@@ -1,0 +1,7 @@
+Nombre              	Edad
+Manuel               	 49
+Pia                  	 56
+Ivan                 	 23
+Esteban              	 70
+Sabrina              	 18
+Emy                  	 39

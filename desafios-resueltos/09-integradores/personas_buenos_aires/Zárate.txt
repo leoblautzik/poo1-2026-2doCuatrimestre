@@ -1,0 +1,7 @@
+Nombre              	Edad
+Pedro                	 43
+Tomas                	 45
+Gabriel              	 61
+Lara                 	 64
+Silvina              	 41
+Mauricio             	 22
