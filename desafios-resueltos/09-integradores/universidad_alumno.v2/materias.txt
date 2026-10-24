@@ -1,0 +1,22 @@
+Arte
+['Luz', 'Mia', 'Max', 'Paz', 'Roc', 'Bel', 'Gael', 'Lara', 'Nora', 'Raul', 'Bruno', 'Gemma', 'Lucas', 'Pablo', 'Tomas', 'Agustin', 'Beatriz', 'Daniela', 'Gonzalo', 'Lucia', 'Patricia', 'Tomas', 'Alejandro', 'Esperanza', 'Guadalupe', 'Sebastian', 'Victorina', 'Florencia', 'Evangelina', 'Concepcion']
+Biologia
+['Luz', 'Noe', 'Ale', 'Gis', 'Sol', 'Gael', 'Ivan', 'Maia', 'Raul', 'Bruno', 'Fabio', 'Jaime', 'Pablo', 'Tomas', 'Ailen', 'Alvaro', 'Carlos', 'Gabriel', 'Lucia', 'Nicolas', 'Santiago', 'Alejandro', 'Cristian', 'Guadalupe', 'Margarita', 'Valentino', 'Maximiliano', 'Evangelina', 'Bernardino']
+Filosofia
+['Leo', 'Mia', 'Axi', 'Pol', 'Bel', 'Ines', 'Luka', 'Olga', 'Yago', 'Dario', 'Gemma', 'Lucas', 'Rocio', 'Uriel', 'Agustin', 'Beatriz', 'Esteban', 'Ignacio', 'Manuel', 'Patricia', 'Tomas', 'Alexander', 'Francisco', 'Guadalupe', 'Sebastian', 'Victorina', 'Cristopher', 'Evangelina', 'Maximilian']
+Fisica
+['Ian', 'Lia', 'Noe', 'Zoe', 'Gis', 'Uli', 'Enzo', 'Juan', 'Maia', 'Raul', 'Aylen', 'Fabio', 'Jaime', 'Mateo', 'Sofia', 'Ailen', 'Alicia', 'Camila', 'Gabriel', 'Joaquin', 'Marina', 'Santiago', 'Alejandra', 'Constanza', 'Guillermo', 'Magdalena', 'Valentino', 'Maximiliano', 'Jacqueline', 'Bernardino', 'Buenaventura']
+Geografia
+['Eva', 'Axi', 'Roc', 'Ciro', 'Ines', 'Luka', 'Omar', 'Aylen', 'Gemma', 'Mario', 'Rocio', 'Victor', 'Alberto', 'Camila', 'Ignacio', 'Marina', 'Rodrigo', 'Valeria', 'Constanza', 'Francisco', 'Lourdes', 'Sebastian', 'Sebastiana', 'Cristopher', 'Montserrat', 'Maximilian']
+Historia
+['Ian', 'Eva', 'Mia', 'Teo', 'Ale', 'Pol', 'Bel', 'Ciro', 'Ines', 'Luka', 'Omar', 'Yago', 'Dario', 'Iker', 'Lucas', 'Rocio', 'Victor', 'Alberto', 'Camila', 'Esteban', 'Manuel', 'Rodrigo', 'Tomas', 'Constanza', 'Francisco', 'Lourdes', 'Sebastian', 'Sebastiana', 'Cristopher', 'Montserrat', 'Maximilian']
+Ingles
+['Luz', 'Eva', 'Roy', 'Noe', 'Max', 'Paz', 'Roc', 'Bel', 'Gael', 'Ines', 'Luka', 'Olga', 'Sara', 'Bruno', 'Elena', 'Iker', 'Mario', 'Rocio', 'Uriel', 'Agustin', 'Camila', 'Esteban', 'Joaquin', 'Marina', 'Rodrigo', 'Valeria', 'Constanza', 'Francisco', 'Magdalena', 'Valentina', 'Sebastiana', 'Cristopher', 'Bernardino', 'Maximilian']
+Literatura
+['Luz', 'Mia', 'Max', 'Paz', 'Pol', 'Bel', 'Hugo', 'Lara', 'Olga', 'Yago', 'Elena', 'Kev', 'Pablo', 'Tomas', 'Agustin', 'Beatriz', 'Esteban', 'Ignacio', 'Patricia', 'Tomas', 'Alexander', 'Esperanza', 'Guadalupe', 'Sebastian', 'Victorina', 'Florencia', 'Evangelina', 'Maximilian']
+Matematica
+['Ana', 'Leo', 'Roy', 'Noe', 'Zoe', 'Ale', 'Gis', 'Roc', 'Uli', 'Enzo', 'Ines', 'Juan', 'Maia', 'Omar', 'Aylen', 'Elena', 'Jaime', 'Mario', 'Sofia', 'Victor', 'Alicia', 'Camila', 'Gabriel', 'Joaquin', 'Marina', 'Santiago', 'Alejandra', 'Constanza', 'Francisco', 'Magdalena', 'Valentina', 'Maximiliano', 'Jacqueline', 'Bernardino', 'Buenaventura']
+Programacion
+['Luz', 'Lia', 'Zoe', 'Mar', 'Roc', 'Uli', 'Hugo', 'Juan', 'Nora', 'Raul', 'Bruno', 'Gemma', 'Jaime', 'Pablo', 'Tomas', 'Agustin', 'Alvaro', 'Daniela', 'Gabriel', 'Lucia', 'Nicolas', 'Tomas', 'Alejandro', 'Esperanza', 'Guadalupe', 'Margarita', 'Victorina', 'Maximiliano', 'Evangelina', 'Concepcion']
+Quimica
+['Ian', 'Lia', 'Noe', 'Ale', 'Gis', 'Sol', 'Enzo', 'Ivan', 'Maia', 'Raul', 'Bruno', 'Fabio', 'Jaime', 'Mateo', 'Tomas', 'Ailen', 'Alvaro', 'Carlos', 'Gabriel', 'Lucia', 'Marina', 'Santiago', 'Alejandro', 'Cristian', 'Guillermo', 'Magdalena', 'Valentino', 'Maximiliano', 'Jacqueline', 'Bernardino']
