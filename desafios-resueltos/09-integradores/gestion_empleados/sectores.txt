@@ -1,0 +1,42 @@
+
+Ventas
+Ana, Ventas, 5000.00
+Juan, Ventas, 5500.00
+Lucía, Ventas, 6100.00
+Nicolás, Ventas, 5700.00
+Agustín, Ventas, 7200.00
+Emilia, Ventas, 5000.00
+
+IT
+Luis, IT, 6000.00
+Marta, IT, 6200.00
+Carla, IT, 7500.00
+Tomás, IT, 6800.00
+Santiago, IT, 8200.00
+Federico, IT, 6400.00
+Joaquín, IT, 7100.00
+
+Recursos Humanos
+Sofía, Recursos Humanos, 4800.00
+Valentina, Recursos Humanos, 5200.00
+Milagros, Recursos Humanos, 5900.00
+Abril, Recursos Humanos, 4500.00
+
+Marketing
+Diego, Marketing, 5300.00
+Martín, Marketing, 5800.00
+Camila, Marketing, 6000.00
+Renata, Marketing, 4700.00
+Ramiro, Marketing, 6900.00
+
+Logística
+Pedro, Logística, 4600.00
+Paula, Logística, 4900.00
+Mateo, Logística, 5300.00
+Bruno, Logística, 6100.00
+
+Administración
+Florencia, Administración, 5100.00
+Julieta, Administración, 5600.00
+Victoria, Administración, 6300.00
+Micaela, Administración, 5400.00
